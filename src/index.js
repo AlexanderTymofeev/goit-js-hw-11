@@ -35,6 +35,8 @@ const onFormSubmit = async event => {
     if (data.hits.length === 0) {
       Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
       loadMoreBtn.classList.add('is-hidden');
+    } else if (data.hits.length < 40) {
+      loadMoreBtn.classList.add('is-hidden');
     }
 
     galleryEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.hits));
